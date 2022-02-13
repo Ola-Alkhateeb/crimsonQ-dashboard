@@ -36,13 +36,13 @@
         <a href="#">
           <img
             alt="Logo"
-            src="media/logos/logo-demo2.png"
-            class="logo-default h-25px"
+            src="media/whiteLogo.png"
+            class="logo-default h-40px"
           />
           <img
             alt="Logo"
-            src="media/logos/logo-demo2.png"
-            class="logo-sticky h-25px"
+            src="media/whiteLogo.png"
+            class="logo-sticky h-40px"
           />
         </a>
       </div>

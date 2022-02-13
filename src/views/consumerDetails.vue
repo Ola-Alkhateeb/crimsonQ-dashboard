@@ -23,7 +23,7 @@
       <div class="list-unstyled text-gray-600 fw-bold fs-6 p-0 m-0 row">
         <div class="col-lg-2 fw-bold text-muted">Topics : </div>
         <div class="col-lg-8">
-          <div  class="fw-bolder fs-6 text-gray-800 " v-for="topic in topics" :key = "topic"> {{topic}} </div> 
+          <div  class="fw-bolder fs-6 text-gray-800 " v-for="topic in topics" :key = "topic"> <span class="bullet bullet-dot bg-primary me-5"></span> {{topic}} </div> 
         </div>
         <div class="col-lg-2"><button class="btn btn-primary" @click=" this.$router.push('/dashboard')">Back</button></div>
       </div>
@@ -113,81 +113,33 @@
 <!--end::Header-->
 
 <!--begin::Form-->
-<div id="kt_layout_builder_form">
+<div id="kt_layout_builder_form" style="background: #f5f8fa;">
   <!--begin::Body-->
   <div class="tab-content pt-3" id="kt_tabs">
     <div
-    class="tab-pane"
-    :class="{ active: tabIndex === 0 }"
+    class="tab-pane active"
     id="kt_builder_main"
     >
-    <!-- <div v-for="record in statusData " :key="$index" > -->
-      <div class="card bgi-no-repeat h-xl-100" style="background-position: right top; background-size: 30% auto; background-image: url(media/svg/shapes/abstract-2.svg); border:1px solid #eff2f5 margin-top:5px;" >
-       <!--begin::Body-->
-       <div class="card-body">
-        <a href="#" class="card-title fw-bolder text-muted text-hover-primary fs-4">Meeting Schedule</a>
-        <div class="fw-bolder text-primary my-6">03 May 2020</div>
-        <p class="text-dark-75 fw-bold fs-5 m-0">Great blog posts don’t just happen Even the best bloggers need it</p>
+    <div class="pull-right" >
+      <button class="btn btn-sm btn-danger" style="margin: 5px;" v-if="tabIndex === 4 || tabIndex === 2" @click="deleteStatuData()" >Delete All</button>
+      <button class="btn btn-sm btn-primary" v-if="tabIndex === 4">Retry All</button>
+    </div>
+    <div v-if="!statusData || statusData.length == 0" class="text-muted text-center h3"> No data available </div>
+    <div v-for="record in statusData " :key="record.key"  class="card bgi-no-repeat h-xl-100" style="background-position: right top; background-size: 30% auto; background-image: url(media/svg/shapes/abstract-2.svg); margin-top: 5px; border: 1px solid rgb(226 227 229);" >
+     <!--begin::Body-->
+     <div class="card-body">
+      <a href="#" class="card-title fw-bolder text-muted text-hover-primary fs-4">Key : {{record.key}}</a>
+      <div>
+        <div class="fw-bolder text-primary my-4" v-for="(item, key) in record.statusHistory" :key="item">{{key}} : {{item}}</div>
       </div>
-      <!-- </div> -->
+      <p class="text-dark-75 fw-bold fs-5 m-0 text-danger my-4" v-if="record.error">Error : {{record.error}}</p>
+      <p class="text-dark-75 fw-bold fs-5 m-0 my-4">Message : {{record.value}}</p>
     </div>
   </div>
-
-  <div
-  class="tab-pane"
-  :class="{ active: tabIndex === 1 }"
-  id="kt_builder_header"
-  >
-  <div class="row mb-10">
-
-  </div>
-
-</div>
-
-<div
-class="tab-pane"
-:class="{ active: tabIndex === 2 }"
-id="kt_builder_subheader"
->
-<div class="row mb-10">
-
-</div>
-</div>
-
-<div
-class="tab-pane"
-:class="{ active: tabIndex === 3 }"
-id="kt_builder_aside"
->
-<div class="row mb-10">
-
-</div>
-</div>
-
-<div
-class="tab-pane"
-:class="{ active: tabIndex === 4 }"
-id="kt_builder_content"
->
-<div class="row mb-10">
-
-</div>
-</div>
-
-<div
-class="tab-pane"
-:class="{ active: tabIndex === 5 }"
-id="kt_builder_footer"
->
-<div class="row mb-10">
-
 </div>
 </div>
 </div>
-</div>
-<!--end::Body-->
 
-<!--end::Form-->
 </div>
 
 </template>
@@ -195,7 +147,6 @@ id="kt_builder_footer"
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import { config } from "@/core/helpers/config";
-import { themeName } from "@/core/helpers/documentation";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
 import ApiService from "../core/services/ApiService";
 
@@ -238,6 +189,16 @@ export default defineComponent({
         console.log(JSON.parse(d.data))
         this.statusData  = JSON.parse(d.data);
       });
+    },
+    deleteStatuData(){
+      var status = localStorage.getItem("tabStatus")
+      status = status == 'completed' ? 'complete' :status ;
+      console.log(this.consumerId)
+      // var payload = {consumerId : this.consumerId};
+      // ApiService.post(`consumer/flush/${status}`, payload).then((d)=>{
+      //   console.log(JSON.parse(d.data))
+      //   this.statusData  = JSON.parse(d.data);
+      // });
     }
   },
 
@@ -286,8 +247,7 @@ export default defineComponent({
       config,
       reset,
       setActiveTab,
-      submit,
-      themeName,
+      submit
     };
   },
 });
