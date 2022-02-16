@@ -23,12 +23,7 @@
           'container-xxl': !contentWidthFluid,
         }"
       >
-        <!-- begin:: Aside Left -->
-        <KTAside
-          v-if="asideEnabled"
-          :lightLogo="themeLightLogo"
-          :darkLogo="themeDarkLogo"
-        />
+
         <!-- end:: Aside Left -->
         <!-- begin:: Content Body -->
         <div class="content flex-row-fluid">
@@ -42,8 +37,6 @@
   </div>
   <!-- end:: Body -->
   <KTScrollTop />
-  <KTUserMenu />
-  <KTCreateApp />
 
 </template>
 
@@ -51,15 +44,12 @@
 import { defineComponent, computed, onMounted, watch, nextTick } from "vue";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
-import KTAside from "@/layout/aside/Aside.vue";
 import KTHeader from "@/layout/header/Header.vue";
 import KTFooter from "@/layout/footer/Footer.vue";
 import HtmlClass from "@/core/services/LayoutService";
 import KTToolbar from "@/layout/toolbar/Toolbar.vue";
 import KTScrollTop from "@/layout/extras/ScrollTop.vue";
-import KTUserMenu from "@/layout/header/partials/ActivityDrawer.vue";
 import KTLoader from "@/components/Loader.vue";
-import KTCreateApp from "@/components/modals/wizards/CreateAppModal.vue";
 
 import { Actions } from "@/store/enums/StoreEnums";
 import { MenuComponent } from "@/assets/ts/components";
@@ -79,13 +69,10 @@ import {
 export default defineComponent({
   name: "Layout",
   components: {
-    KTAside,
     KTHeader,
     KTFooter,
     KTToolbar,
     KTScrollTop,
-    KTCreateApp,
-    KTUserMenu,
     KTLoader,
   },
   setup() {
