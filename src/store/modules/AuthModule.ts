@@ -80,8 +80,9 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
 
   @Action
   [Actions.LOGIN](credentials) {
+
       if(credentials.email == "admin@crimsonq.com" && credentials.password == 'admin'){
-        this.context.commit(Mutations.SET_AUTH, {...credentials , api_token : 'whatevertokengoeshere'});
+        this.context.commit(Mutations.SET_AUTH, {...credentials , api_token : 'Y3JpbXNvblE6Y3JpbXNvblEh'});
       }else{
         this.context.commit(Mutations.SET_ERROR, 'invalid email or password');
       }

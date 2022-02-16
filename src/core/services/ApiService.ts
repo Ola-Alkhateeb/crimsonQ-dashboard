@@ -3,7 +3,6 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import JwtService from "@/core/services/JwtService";
 import { AxiosResponse, AxiosRequestConfig } from "axios";
-
 /**
  * @description service to call HTTP request via Axios
  */
@@ -20,17 +19,16 @@ class ApiService {
     ApiService.vueInstance = app;
     ApiService.vueInstance.use(VueAxios, axios);
     ApiService.vueInstance.axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+    this.setHeader();
+
   }
 
   /**
    * @description set the default HTTP request headers
    */
   public static setHeader(): void {
-    ApiService.vueInstance.axios.defaults.headers.common[
-      "Authorization"
-    ] = `Token ${JwtService.getToken()}`;
-    ApiService.vueInstance.axios.defaults.headers.common["Accept"] =
-      "application/json";
+    ApiService.vueInstance.axios.defaults.headers.common["Authorization"] = `Basic ${JwtService.getToken()}`;
+    ApiService.vueInstance.axios.defaults.headers.common["Accept"] = "application/json";
   }
 
   /**
@@ -67,7 +65,7 @@ class ApiService {
    */
   public static post(
     resource: string,
-    params: AxiosRequestConfig
+    params: any
   ): Promise<AxiosResponse> {
     return ApiService.vueInstance.axios.post(`${resource}`, params);
   }
