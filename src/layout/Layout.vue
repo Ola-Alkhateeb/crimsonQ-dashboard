@@ -23,7 +23,6 @@
           'container-xxl': !contentWidthFluid,
         }"
       >
-
         <!-- end:: Aside Left -->
         <!-- begin:: Content Body -->
         <div class="content flex-row-fluid">
@@ -37,7 +36,6 @@
   </div>
   <!-- end:: Body -->
   <KTScrollTop />
-
 </template>
 
 <script lang="ts">

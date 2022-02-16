@@ -45,7 +45,6 @@
       </div>
       <!--end::Page title-->
 
-
       <!--end::Actions-->
     </div>
     <!--end::Container-->
@@ -63,8 +62,7 @@ export default defineComponent({
     breadcrumbs: Array,
     title: String,
   },
-  components: {
-  },
+  components: {},
   setup() {
     return {
       toolbarWidthFluid,

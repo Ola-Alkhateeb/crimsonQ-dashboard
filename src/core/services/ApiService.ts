@@ -20,15 +20,17 @@ class ApiService {
     ApiService.vueInstance.use(VueAxios, axios);
     ApiService.vueInstance.axios.defaults.baseURL = process.env.VUE_APP_API_URL;
     this.setHeader();
-
   }
 
   /**
    * @description set the default HTTP request headers
    */
   public static setHeader(): void {
-    ApiService.vueInstance.axios.defaults.headers.common["Authorization"] = `Basic ${JwtService.getToken()}`;
-    ApiService.vueInstance.axios.defaults.headers.common["Accept"] = "application/json";
+    ApiService.vueInstance.axios.defaults.headers.common[
+      "Authorization"
+    ] = `Basic ${JwtService.getToken()}`;
+    ApiService.vueInstance.axios.defaults.headers.common["Accept"] =
+      "application/json";
   }
 
   /**
@@ -63,10 +65,7 @@ class ApiService {
    * @param params: AxiosRequestConfig
    * @returns Promise<AxiosResponse>
    */
-  public static post(
-    resource: string,
-    params: any
-  ): Promise<AxiosResponse> {
+  public static post(resource: string, params: any): Promise<AxiosResponse> {
     return ApiService.vueInstance.axios.post(`${resource}`, params);
   }
 

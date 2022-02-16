@@ -15,9 +15,7 @@
           class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px"
           id="kt_activities_toggle"
         >
-          <span class="svg-icon svg-icon-1">
-            <inline-svg src="media/icons/duotune/general/gen032.svg" />
-          </span>
+          <span class="svg-icon svg-icon-1"> </span>
         </div>
         <!--end::drawer toggle-->
       </div>
@@ -33,9 +31,7 @@
           data-kt-menu-placement="bottom-end"
           data-kt-menu-flip="bottom"
         >
-          <span class="svg-icon svg-icon-1">
-            <inline-svg src="media/icons/duotune/general/gen025.svg" />
-          </span>
+          <span class="svg-icon svg-icon-1"> </span>
         </div>
         <KTQuickLinksMenu></KTQuickLinksMenu>
         <!--end::Menu-->
@@ -49,9 +45,7 @@
           class="btn btn-icon btn-active-light-primary btn-custom position-relative w-30px h-30px w-md-40px h-md-40px"
           id="kt_drawer_chat_toggle"
         >
-          <span class="svg-icon svg-icon-1">
-            <inline-svg src="media/icons/duotune/communication/com012.svg" />
-          </span>
+          <span class="svg-icon svg-icon-1"> </span>
 
           <span
             class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"
@@ -72,9 +66,7 @@
           data-kt-menu-placement="bottom-end"
           data-kt-menu-flip="bottom"
         >
-          <span class="svg-icon svg-icon-1">
-            <inline-svg src="media/icons/duotune/general/gen022.svg" />
-          </span>
+          <span class="svg-icon svg-icon-1"> </span>
         </div>
         <KTNotificationsMenu></KTNotificationsMenu>
         <!--end::Menu-->

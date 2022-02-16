@@ -4,45 +4,45 @@ import { Mutations, Actions } from "@/store/enums/StoreEnums";
 import JwtService from "../core/services/JwtService";
 
 const routes: Array<RouteRecordRaw> = [
-{
-  path: "/",
-  redirect: "/dashboard",
-  component: () => import("@/layout/Layout.vue"),
-  children: [
   {
-    path: "/dashboard",
-    name: "dashboard",
-    component: () => import("@/views/Dashboard.vue"),
+    path: "/",
+    redirect: "/dashboard",
+    component: () => import("@/layout/Layout.vue"),
+    children: [
+      {
+        path: "/dashboard",
+        name: "dashboard",
+        component: () => import("@/views/Dashboard.vue"),
+      },
+      {
+        path: "/consumer/:consumerId",
+        name: "consumer",
+        component: () => import("@/views/consumerDetails.vue"),
+      },
+    ],
   },
   {
-    path: "/consumer/:consumerId",
-    name: "consumer",
-    component: () => import("@/views/consumerDetails.vue"),
+    path: "/",
+    component: () => import("@/components/page-layouts/Auth.vue"),
+    children: [
+      {
+        path: "/sign-in",
+        name: "sign-in",
+        component: () =>
+          import("@/views/crafted/authentication/basic-flow/SignIn.vue"),
+      },
+    ],
   },
-  ],
-},
-{
-  path: "/",
-  component: () => import("@/components/page-layouts/Auth.vue"),
-  children: [
   {
-    path: "/sign-in",
-    name: "sign-in",
-    component: () =>
-    import("@/views/crafted/authentication/basic-flow/SignIn.vue"),
-  }
-  ],
-},
-{
-  // the 404 route, when none of the above matches
-  path: "/404",
-  name: "404",
-  component: () => import("@/views/crafted/authentication/Error404.vue"),
-},
-{
-  path: "/:pathMatch(.*)*",
-  redirect: "/404",
-},
+    // the 404 route, when none of the above matches
+    path: "/404",
+    name: "404",
+    component: () => import("@/views/crafted/authentication/Error404.vue"),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/404",
+  },
 ];
 
 const router = createRouter({

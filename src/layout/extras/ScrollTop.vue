@@ -7,7 +7,7 @@
     data-kt-scrolltop="true"
   >
     <span class="svg-icon">
-      <inline-svg src="media/icons/duotune/arrows/arr066.svg" />
+      <em class="bi bi-caret-up-fill text-white"></em>
     </span>
   </div>
   <!-- end::Scrolltop -->

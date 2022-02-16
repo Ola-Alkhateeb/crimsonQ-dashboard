@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 
-
 import router from "@/router/index.ts";
 import store from "./store";
 import ElementPlus from "element-plus";
@@ -14,7 +13,7 @@ import { initInlineSvg } from "@/core/plugins/inline-svg";
 import { initVeeValidate } from "@/core/plugins/vee-validate";
 
 import "@/core/plugins/prismjs";
-import "bootstrap"; 
+import "bootstrap";
 
 const app = createApp(App);
 

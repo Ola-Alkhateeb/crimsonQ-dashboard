@@ -23,11 +23,7 @@
         <div
           class="btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px"
           id="kt_header_menu_mobile_toggle"
-        >
-          <span class="svg-icon svg-icon-2x">
-            <inline-svg src="media/icons/duotune/abstract/abs015.svg" />
-          </span>
-        </div>
+        ></div>
       </div>
       <!--end::Aside mobile toggle-->
 
@@ -57,7 +53,6 @@
           <KTMenu></KTMenu>
         </div>
         <!--end::Navbar-->
-
       </div>
       <!--end::Wrapper-->
     </div>

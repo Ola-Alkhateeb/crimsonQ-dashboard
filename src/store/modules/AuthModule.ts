@@ -80,12 +80,17 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
 
   @Action
   [Actions.LOGIN](credentials) {
-
-      if(credentials.email == "admin@crimsonq.com" && credentials.password == 'admin'){
-        this.context.commit(Mutations.SET_AUTH, {...credentials , api_token : 'Y3JpbXNvblE6Y3JpbXNvblEh'});
-      }else{
-        this.context.commit(Mutations.SET_ERROR, 'invalid email or password');
-      }
+    if (
+      credentials.email == "admin@crimsonq.com" &&
+      credentials.password == "admin"
+    ) {
+      this.context.commit(Mutations.SET_AUTH, {
+        ...credentials,
+        api_token: "Y3JpbXNvblE6Y3JpbXNvblEh",
+      });
+    } else {
+      this.context.commit(Mutations.SET_ERROR, "invalid email or password");
+    }
   }
 
   @Action
@@ -122,7 +127,6 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
       //   .then(({ data }) => {
       //     this.context.commit(Mutations.SET_AUTH, data);
       //   })
-
     } else {
       this.context.commit(Mutations.PURGE_AUTH);
     }

@@ -3,104 +3,103 @@
   <div class="w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto">
     <!--begin::Form-->
     <Form
-    class="form w-100"
-    id="kt_login_signin_form"
-    @submit="onSubmitLogin"
-    :validation-schema="login"
+      class="form w-100"
+      id="kt_login_signin_form"
+      @submit="onSubmitLogin"
+      :validation-schema="login"
     >
-    <!--begin::Heading-->
-    <div class="text-center mb-10">
-      <!--begin::Title-->
-      <h1 class="text-dark mb-3">Sign In to CrimsonQ</h1>
-      <!--end::Title-->
-
-    </div>
-    <!--begin::Heading-->
-
-    <div class="mb-10 bg-light-info p-8 rounded">
-      <div class="text-info">
-        Use account <strong>admin@crimsonq.com</strong> and password
-        <strong>admin</strong> to continue.
+      <!--begin::Heading-->
+      <div class="text-center mb-10">
+        <!--begin::Title-->
+        <h1 class="text-dark mb-3">Sign In to CrimsonQ</h1>
+        <!--end::Title-->
       </div>
-    </div>
+      <!--begin::Heading-->
 
-    <!--begin::Input group-->
-    <div class="fv-row mb-10">
-      <!--begin::Label-->
-      <label class="form-label fs-6 fw-bolder text-dark">Email</label>
-      <!--end::Label-->
-
-      <!--begin::Input-->
-      <Field
-      class="form-control form-control-lg form-control-solid"
-      type="text"
-      name="email"
-      autocomplete="off"
-      />
-      <!--end::Input-->
-      <div class="fv-plugins-message-container">
-        <div class="fv-help-block">
-          <ErrorMessage name="email" />
+      <div class="mb-10 bg-light-info p-8 rounded">
+        <div class="text-info">
+          Use account <strong>admin@crimsonq.com</strong> and password
+          <strong>admin</strong> to continue.
         </div>
       </div>
-    </div>
-    <!--end::Input group-->
 
-    <!--begin::Input group-->
-    <div class="fv-row mb-10">
-      <!--begin::Wrapper-->
-      <div class="d-flex flex-stack mb-2">
+      <!--begin::Input group-->
+      <div class="fv-row mb-10">
         <!--begin::Label-->
-        <label class="form-label fw-bolder text-dark fs-6 mb-0"
-        >Password</label
-        >
+        <label class="form-label fs-6 fw-bolder text-dark">Email</label>
         <!--end::Label-->
-      </div>
-      <!--end::Wrapper-->
 
-      <!--begin::Input-->
-      <Field
-      class="form-control form-control-lg form-control-solid"
-      type="password"
-      name="password"
-      autocomplete="off"
-      />
-      <!--end::Input-->
-      <div class="fv-plugins-message-container">
-        <div class="fv-help-block">
-          <ErrorMessage name="password" />
+        <!--begin::Input-->
+        <Field
+          class="form-control form-control-lg form-control-solid"
+          type="text"
+          name="email"
+          autocomplete="off"
+        />
+        <!--end::Input-->
+        <div class="fv-plugins-message-container">
+          <div class="fv-help-block">
+            <ErrorMessage name="email" />
+          </div>
         </div>
       </div>
-    </div>
-    <!--end::Input group-->
+      <!--end::Input group-->
 
-    <!--begin::Actions-->
-    <div class="text-center">
-      <!--begin::Submit button-->
-      <button
-      type="submit"
-      ref="submitButton"
-      id="kt_sign_in_submit"
-      class="btn btn-lg btn-primary w-100 mb-5"
-      >
-      <span class="indicator-label"> Continue </span>
+      <!--begin::Input group-->
+      <div class="fv-row mb-10">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-stack mb-2">
+          <!--begin::Label-->
+          <label class="form-label fw-bolder text-dark fs-6 mb-0"
+            >Password</label
+          >
+          <!--end::Label-->
+        </div>
+        <!--end::Wrapper-->
 
-      <span class="indicator-progress">
-        Please wait...
-        <span
-        class="spinner-border spinner-border-sm align-middle ms-2"
-        ></span>
-      </span>
-    </button>
-    <!--end::Submit button-->
+        <!--begin::Input-->
+        <Field
+          class="form-control form-control-lg form-control-solid"
+          type="password"
+          name="password"
+          autocomplete="off"
+        />
+        <!--end::Input-->
+        <div class="fv-plugins-message-container">
+          <div class="fv-help-block">
+            <ErrorMessage name="password" />
+          </div>
+        </div>
+      </div>
+      <!--end::Input group-->
 
-    <!--end::Google link-->
+      <!--begin::Actions-->
+      <div class="text-center">
+        <!--begin::Submit button-->
+        <button
+          type="submit"
+          ref="submitButton"
+          id="kt_sign_in_submit"
+          class="btn btn-lg btn-primary w-100 mb-5"
+        >
+          <span class="indicator-label"> Continue </span>
+
+          <span class="indicator-progress">
+            Please wait...
+            <span
+              class="spinner-border spinner-border-sm align-middle ms-2"
+            ></span>
+          </span>
+        </button>
+        <!--end::Submit button-->
+
+        <!--end::Google link-->
+      </div>
+      <!--end::Actions-->
+    </Form>
+    <!--end::Form-->
   </div>
-  <!--end::Actions-->
-</Form>
-<!--end::Form-->
-</div>
-<!--end::Wrapper-->
+  <!--end::Wrapper-->
 </template>
 
 <script lang="ts">
@@ -146,8 +145,8 @@ export default defineComponent({
       // Send login request
       await store.dispatch(Actions.LOGIN, values);
 
-       // store.setAuth(values);
-// 
+      // store.setAuth(values);
+      //
       const [errorName] = Object.keys(store.getters.getErrors);
       const error = store.getters.getErrors[errorName];
 

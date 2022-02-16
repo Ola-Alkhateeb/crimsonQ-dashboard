@@ -150,11 +150,7 @@
                   :to="menuItem.route"
                 >
                   <span class="menu-icon">
-                    <span class="svg-icon svg-icon-2">
-                      <inline-svg
-                        src="media/icons/duotune/layouts/lay009.svg"
-                      />
-                    </span>
+                    <span class="svg-icon svg-icon-2"> </span>
                   </span>
                   <span class="menu-title">{{
                     translate(menuItem.heading)
