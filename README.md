@@ -28,3 +28,8 @@ npm build
 ```
 npm lint
 ```
+### Login 
+```
+email : admin@crimsonq.com
+password : admin
+```

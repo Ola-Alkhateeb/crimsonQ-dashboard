@@ -16,7 +16,7 @@
       </div>
       <!--begin::Heading-->
 
-      <div class="mb-10 bg-light-info p-8 rounded">
+      <div class="mb-10 bg-light-info p-8 rounded" style="display: none">
         <div class="text-info">
           Use account <strong>admin@crimsonq.com</strong> and password
           <strong>admin</strong> to continue.
