@@ -6,39 +6,39 @@ import { AxiosResponse, AxiosRequestConfig } from "axios";
 /**
  * @description service to call HTTP request via Axios
  */
- class ApiService {
+class ApiService {
   /**
    * @description property to share vue instance
    */
-   public static vueInstance: App;
-   public static isHeaderSet: boolean;
+  public static vueInstance: App;
+  public static isHeaderSet: boolean;
 
   /**
    * @description initialize vue axios
    */
-   public static init(app: App<Element>) {
-     ApiService.vueInstance = app;
-     ApiService.vueInstance.use(VueAxios, axios);
-     ApiService.vueInstance.axios.defaults.baseURL = process.env.VUE_APP_API_URL;
-     this.isHeaderSet = false;
-     this.setHeader();
-   }
+  public static init(app: App<Element>) {
+    ApiService.vueInstance = app;
+    ApiService.vueInstance.use(VueAxios, axios);
+    ApiService.vueInstance.axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+    this.isHeaderSet = false;
+    this.setHeader();
+  }
 
   /**
    * @description set the default HTTP request headers
    */
-   public static setHeader(): void {
-     ApiService.vueInstance.axios.defaults.headers.common[
-     "Authorization"
-     ] = `Bearer ${JwtService.getToken()}`;
-     ApiService.vueInstance.axios.defaults.headers.common["Accept"] =
-     "application/json";
-     if(JwtService.getToken()){
-       this.isHeaderSet = true;
-     }else{
-       this.isHeaderSet = false;
-     }
-   }
+  public static setHeader(): void {
+    ApiService.vueInstance.axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${JwtService.getToken()}`;
+    ApiService.vueInstance.axios.defaults.headers.common["Accept"] =
+      "application/json";
+    if (JwtService.getToken()) {
+      this.isHeaderSet = true;
+    } else {
+      this.isHeaderSet = false;
+    }
+  }
 
   /**
    * @description send the GET HTTP request
@@ -46,12 +46,12 @@ import { AxiosResponse, AxiosRequestConfig } from "axios";
    * @param params: AxiosRequestConfig
    * @returns Promise<AxiosResponse>
    */
-   public static query(
-     resource: string,
-     params: AxiosRequestConfig
-     ): Promise<AxiosResponse> {
-     return ApiService.vueInstance.axios.get(resource, params);
-   }
+  public static query(
+    resource: string,
+    params: AxiosRequestConfig
+  ): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.get(resource, params);
+  }
 
   /**
    * @description send the GET HTTP request
@@ -59,15 +59,15 @@ import { AxiosResponse, AxiosRequestConfig } from "axios";
    * @param slug: string
    * @returns Promise<AxiosResponse>
    */
-   public static get(
-     resource: string,
-     slug = "" as string
-     ): Promise<AxiosResponse> {
-     if(!this.isHeaderSet){
-       this.setHeader();
-     }
-     return ApiService.vueInstance.axios.get(`${resource}/${slug}`);
-   }
+  public static get(
+    resource: string,
+    slug = "" as string
+  ): Promise<AxiosResponse> {
+    if (!this.isHeaderSet) {
+      this.setHeader();
+    }
+    return ApiService.vueInstance.axios.get(`${resource}/${slug}`);
+  }
 
   /**
    * @description set the POST HTTP request
@@ -75,9 +75,9 @@ import { AxiosResponse, AxiosRequestConfig } from "axios";
    * @param params: AxiosRequestConfig
    * @returns Promise<AxiosResponse>
    */
-   public static post(resource: string, params: any): Promise<AxiosResponse> {
-     return ApiService.vueInstance.axios.post(`${resource}`, params);
-   }
+  public static post(resource: string, params: any): Promise<AxiosResponse> {
+    return ApiService.vueInstance.axios.post(`${resource}`, params);
+  }
 
   /**
    * @description send the UPDATE HTTP request
@@ -86,17 +86,17 @@ import { AxiosResponse, AxiosRequestConfig } from "axios";
    * @param params: AxiosRequestConfig
    * @returns Promise<AxiosResponse>
    */
-   public static update(
-     resource: string,
-     slug: string,
-     params: AxiosRequestConfig
-     ): Promise<AxiosResponse> {
-     if(!this.isHeaderSet){
-       this.setHeader();
-     }
+  public static update(
+    resource: string,
+    slug: string,
+    params: AxiosRequestConfig
+  ): Promise<AxiosResponse> {
+    if (!this.isHeaderSet) {
+      this.setHeader();
+    }
 
-     return ApiService.vueInstance.axios.put(`${resource}/${slug}`, params);
-   }
+    return ApiService.vueInstance.axios.put(`${resource}/${slug}`, params);
+  }
 
   /**
    * @description Send the PUT HTTP request
@@ -104,27 +104,27 @@ import { AxiosResponse, AxiosRequestConfig } from "axios";
    * @param params: AxiosRequestConfig
    * @returns Promise<AxiosResponse>
    */
-   public static put(
-     resource: string,
-     params: AxiosRequestConfig
-     ): Promise<AxiosResponse> {
-     if(!this.isHeaderSet){
-       this.setHeader();
-     }
-     return ApiService.vueInstance.axios.put(`${resource}`, params);
-   }
+  public static put(
+    resource: string,
+    params: AxiosRequestConfig
+  ): Promise<AxiosResponse> {
+    if (!this.isHeaderSet) {
+      this.setHeader();
+    }
+    return ApiService.vueInstance.axios.put(`${resource}`, params);
+  }
 
   /**
    * @description Send the DELETE HTTP request
    * @param resource: string
    * @returns Promise<AxiosResponse>
    */
-   public static delete(resource: string): Promise<AxiosResponse> {
-     if(!this.isHeaderSet){
-       this.setHeader();
-     }
-     return ApiService.vueInstance.axios.delete(resource);
-   }
- }
+  public static delete(resource: string): Promise<AxiosResponse> {
+    if (!this.isHeaderSet) {
+      this.setHeader();
+    }
+    return ApiService.vueInstance.axios.delete(resource);
+  }
+}
 
- export default ApiService;
+export default ApiService;

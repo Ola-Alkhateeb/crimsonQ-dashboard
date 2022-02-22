@@ -92,7 +92,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
           api_token: data.token,
         });
       })
-      .catch((error ) => {
+      .catch((error) => {
         this.context.commit(Mutations.SET_ERROR, "invalid email or password");
       });
   }
