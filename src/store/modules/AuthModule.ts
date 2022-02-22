@@ -2,6 +2,7 @@ import ApiService from "@/core/services/ApiService";
 import JwtService from "@/core/services/JwtService";
 import { Actions, Mutations } from "@/store/enums/StoreEnums";
 import { Module, Action, Mutation, VuexModule } from "vuex-module-decorators";
+import axios from "axios";
 
 export interface User {
   name: string;
@@ -80,17 +81,20 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
 
   @Action
   [Actions.LOGIN](credentials) {
-    if (
-      credentials.email == "admin@crimsonq.com" &&
-      credentials.password == "admin"
-    ) {
-      this.context.commit(Mutations.SET_AUTH, {
-        ...credentials,
-        api_token: "Y3JpbXNvblE6Y3JpbXNvblEh",
+    const formData = new FormData();
+    formData.append("Username", credentials.Username);
+    formData.append("Password", credentials.Password);
+    return axios
+      .post(process.env.VUE_APP_LOGIN_URL, formData)
+      .then(({ data }) => {
+        this.context.commit(Mutations.SET_AUTH, {
+          ...credentials,
+          api_token: data.token,
+        });
+      })
+      .catch((error ) => {
+        this.context.commit(Mutations.SET_ERROR, "invalid email or password");
       });
-    } else {
-      this.context.commit(Mutations.SET_ERROR, "invalid email or password");
-    }
   }
 
   @Action

@@ -2,7 +2,7 @@ module.exports = {
   publicPath: "/",
   devServer: {
     proxy: {
-      "^/api": {
+      "^/login": {
         target: "http://localhost:8080",
         changeOrigin: true,
       },

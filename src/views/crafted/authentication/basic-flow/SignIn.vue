@@ -18,7 +18,7 @@
 
       <div class="mb-10 bg-light-info p-8 rounded" style="display: none">
         <div class="text-info">
-          Use account <strong>admin@crimsonq.com</strong> and password
+          Use account <strong>admin@crimsonq.com</strong> and Password
           <strong>admin</strong> to continue.
         </div>
       </div>
@@ -26,20 +26,20 @@
       <!--begin::Input group-->
       <div class="fv-row mb-10">
         <!--begin::Label-->
-        <label class="form-label fs-6 fw-bolder text-dark">Email</label>
+        <label class="form-label fs-6 fw-bolder text-dark">Username</label>
         <!--end::Label-->
 
         <!--begin::Input-->
         <Field
           class="form-control form-control-lg form-control-solid"
           type="text"
-          name="email"
+          name="Username"
           autocomplete="off"
         />
         <!--end::Input-->
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
-            <ErrorMessage name="email" />
+            <ErrorMessage name="Username" />
           </div>
         </div>
       </div>
@@ -60,14 +60,14 @@
         <!--begin::Input-->
         <Field
           class="form-control form-control-lg form-control-solid"
-          type="password"
-          name="password"
+          type="Password"
+          name="Password"
           autocomplete="off"
         />
         <!--end::Input-->
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
-            <ErrorMessage name="password" />
+            <ErrorMessage name="Password" />
           </div>
         </div>
       </div>
@@ -126,8 +126,8 @@ export default defineComponent({
 
     //Create form validation object
     const login = Yup.object().shape({
-      email: Yup.string().email().required().label("Email"),
-      password: Yup.string().min(4).required().label("Password"),
+      Username: Yup.string().required().label("Username"),
+      Password: Yup.string().min(2).required().label("Password"),
     });
 
     //Form submit function

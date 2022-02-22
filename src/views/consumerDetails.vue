@@ -278,7 +278,7 @@
 import { defineComponent, onMounted, ref } from "vue";
 import { config } from "@/core/helpers/config";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
-import ApiService from "../core/services/ApiService";
+import ApiService from "@/core/services/ApiService";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import moment from "moment-timezone";
 
